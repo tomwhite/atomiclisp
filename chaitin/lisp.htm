@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>
+LISP Interpreter Applet
+</TITLE>
+</HEAD>
+<BODY>
+<B>JDK1.1.2 VERSION --- TESTED WITH IE5, WIN95 NETSCAPE 4.7, AIX NETSCAPE 4.7</B>
+<P>
+[This Java applet version of my LISP
+is identical with the ``official''
+<A HREF="lisp.c">C</A> and 
+<A HREF="lisp.m">Mathematica</A> versions,  
+except that it allows several M-exps per line, and 
+in its normal non-echo mode
+M-exp input is not interspersed with the S-exp output.
+It will run all the LISP code in 
+<A HREF="index.html"><I>The Unknowable</I></A> and
+<A HREF="../lm.html"><I>The Limits of Mathematics</I></A>. 
+Just cut and paste entire LISP .l source code files
+into the upper window, the M-exp input area, and click on run.
+The output will appear in the bottom window.
+Unfortunately cut and paste does not work with IE5 on my WIN95 PC, but
+I'm told that it works fine if IE5 is running on WIN98.]
+<P>
+For a tutorial on this LISP, see <A HREF="ch2.html">Chapter II</A>
+of <I>The Unknowable.</I>
+For a summary, see below.  For the Java code for the interpreter, 
+click <A HREF="lisp.java">here</A> and <A HREF="Sexp.java">here</A>.
+<P>
+<APPLET CODE="lisp.class" WIDTH=700 HEIGHT=350>
+</APPLET>
+<P>
+<B>Example:</B>
+To define factorial, run "define (f n) if = display n 0 1 * n (f - n 1)".
+To try it, run "(f 5)".  
+Use cut and paste to enter this without typing it.
+<P>
+<B>Syntax:</B> empty list nil = (), 
+lists & sublists built up from atoms which are names and unsigned integers.
+Token delimiter characters are blank, single-quote, double-quote, parens,
+and square brackets.
+A double-quote is used to include an S-exp within an M-exp.
+Square brackets enclose comments, [like this], 
+and comments may be nested.
+<P>
+<B>Functional notation:</B> (f x y z) is f(x,y,z).  In M-exps parens for primitive
+functions are omitted, in S-exps all parens are given explicitly.
+Defined functions are of the form (lambda (parameter-list) function-body). 
+<P>
+<B>List-processing functions:</B> 
+<I>car</I> (one argument, first element of list), 
+<I>cdr</I> (one arg, rest of list),
+<I>cons</I> (two args, add new element to beginning of list), 
+<I>atom</I> (one argument, is-atom predicate),
+= (two args, equal S-exp predicate), 
+<I>append</I> (two args, combines two lists), 
+<I>length</I> (one arg, number of elements in list), 
+<I>size</I> (one arg, number of characters in S-exp), 
+<I>cadr</I> (one arg, second element of list), 
+<I>caddr</I> (one arg, third element of list). 
+<P>
+<B>Pseudo-functions:</B>
+' (one argument, quote, literally), 
+" (one argument, S-exp within M-exp), 
+<I>if</I> (three args, if-then-else selector function),
+<I>display</I> (one arg, identity function, shows arg),
+<I>let</I> (three args, let-be-in, temporary definition), 
+<I>define</I> (two args, define-to-be, permanent definition---allowed at top level only),
+<I>eval</I> (one arg, evaluate S-exp in std environment), 
+<I>lambda</I> (two args, associates list of parameters with function body).
+<P>
+<B>Arithmetic functions:</B> 
++ (two args, addition), - (two args, subtraction), * (two args, multiplication), 
+^ (two args, exponentiation),
+< (two args, less-than predicate), > (two args, greater-than predicate), 
+<= (two args, less-than-or-equal predicate),
+>= (two args, greater-than-or-equal predicate), = (two args, equality predicate),
+<I>base2-to-10</I> (one arg, converts list of bits to integer),
+<I>base10-to-2</I> (one arg, converts integer to list of bits).
+<P>
+<B>Advanced functions:</B>
+(For detailed explanations, see my book 
+<A HREF="../lm.html">
+<I>The Limits of Mathematics</A>.</I>)
+<I>try</I> (three args, try within time-limit to evaluate S-exp with given binary data),
+<I>debug</I> (one arg, identity function, shows arg---unlike display works within try),
+<I>read-bit</I> (no arg, reads the next bit of the binary data),
+<I>read-exp</I> (no arg, reads the next S-exp from the binary data),
+<I>bits</I> (one arg, converts S-exp to bit string of ASCII characters).
+<P>
+[<B>Experimental functions:</B>
+(Undocumented, and not in the C and Mathematica versions of this interpreter.)
+<I>was-read</I> (no arg, gives the binary data read so far in the current try),
+<I>run-utm-on</I> (one arg, runs a binary program on the universal Turing machine
+that's the basis for my computerized version of algorithmic information theory).
+For examples of use, click <A HREF="../ait/utm2.l">here</A>
+and <A HREF="../ait/utm2.html">here</A>.]
+</BODY>
+</HTML>
